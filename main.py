@@ -5,5 +5,5 @@ model = model.eval()
 response, history = model.chat(tokenizer, "hello", history=[])
 print(response)
 
-response, history = model.chat(tokenizer, "please print a hello world message by python", history=history)
+response, history = model.chat(tokenizer, "can u print a hello world message by python？", history=history)
 print(response)
