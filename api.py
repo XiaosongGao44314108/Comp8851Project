@@ -3,8 +3,6 @@ from transformers import AutoTokenizer, AutoModel
 import uvicorn, json, datetime
 import torch
 
-
-
 DEVICE = "cuda"
 DEVICE_ID = "0"
 CUDA_DEVICE = f"{DEVICE}:{DEVICE_ID}" if DEVICE_ID else DEVICE
