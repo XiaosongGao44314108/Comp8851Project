@@ -28,7 +28,7 @@ class ChatGLM2(LLM):
             'max_length':self.max_token})
         print("ChatGLM prompt:", prompt)
         # 调用api 
-        response = requests.post("http://0.0.0.0:8000", headers=headers, data=data, timeout=30)
+        response = requests.post("http://192.168.1.7:8000", headers=headers, data=data, timeout=500)
         if response.status_code!=200:
             return "查询结果错误"
         resp = response.json()
