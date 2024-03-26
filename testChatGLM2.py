@@ -10,5 +10,7 @@ def main():
     response, history = model.chat(tokenizer, "can u print a hello world message by python？", history=history)
     print(response)
     
+    
+    
 if __name__ == '__main__':
     main()
