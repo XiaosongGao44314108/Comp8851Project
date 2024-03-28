@@ -4,7 +4,7 @@ from chatglm2 import ChatGLM2
 llm = ChatGLM2(temperature=0.1)
 
 template = """
-    根据以下内容，提取最重要信息。
+    Only return the most important information based on the following content.
     
     {text}
 """
@@ -12,7 +12,7 @@ prompt = PromptTemplate(
    input_variables=["text"],
    template=template,
 )
-text = '世界最高峰是？'
+text = 'What is the highest mountain in the world?'
 prompt_format = prompt.format(text=text)
 output = llm(prompt_format)
 print(output)

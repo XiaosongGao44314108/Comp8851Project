@@ -27,10 +27,10 @@ class ChatGLM2(LLM):
             'history':self.history,
             'max_length':self.max_token})
         print("ChatGLM prompt:", prompt)
-        # 调用api 
+        # api 
         response = requests.post("http://192.168.1.7:8000", headers=headers, data=data, timeout=500)
         if response.status_code!=200:
-            return "查询结果错误"
+            return "Researching result error"
         resp = response.json()
         if stop is not None:
             response = enforce_stop_tokens(response, stop)
