@@ -2,8 +2,12 @@ from langchain import PromptTemplate
 from chatglm2 import ChatGLM2
 import json
 
+
+
+
 llm = ChatGLM2(temperature=0.1)
-text = 'What is the highest mountain in the world?'
+
+text = 'hello'
 
 def answerThis(Question):
     text=Question
@@ -20,6 +24,4 @@ def answerThis(Question):
     output = llm(prompt_format)
     print(output)
 
-
-print(json.dumps(llm.invoke(text), indent=4))
 answerThis(text)
