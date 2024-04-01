@@ -4,7 +4,6 @@ import json
 
 
 
-
 llm = ChatGLM2(temperature=0.1)
 
 text = 'hello'
