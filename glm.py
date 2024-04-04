@@ -318,6 +318,7 @@ class ChatZhipuAI(BaseChatModel):
         try:
             from zhipuai import ZhipuAI
 
+            print("my glm init")
             if not is_zhipu_v2():
                 raise RuntimeError(
                     "zhipuai package version is too low"
