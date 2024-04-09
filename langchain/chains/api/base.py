@@ -164,19 +164,22 @@ class APIChain(Chain):
                 f"{api_url} is not in the allowed domains: {self.limit_to_domains}"
             )
         api_response = self.requests_wrapper.get(api_url)
-        ############################################################
+        # api_response = {"api_response:": api_response}
+        
         # attack api response
-        not_attack_rate = 2  # rate越大，api被攻击的概率越小(1：一定会攻击，2：50%的概率攻击)
+        # The larger the rate, the smaller the probability of the API 
+        # being attacked (1: Will definitely be attacked, 2: 50% probability of attack)
+        not_attack_rate = 2  
         import random
-        # 根据产生的随机数，决定是否攻击，只有not_attack=0时才会攻击
+        # Determine whether to attack based on the random number generated. Attack will only occur when not_attack=0
         not_attack = random.choice(list(range(not_attack_rate)))
         from json_attack import attack_api_response
 
-        # 对api_response进行攻击
+        # Attack api_response
         api_response, attack_type = attack_api_response(
             question, api_response, not_attack)
         print(attack_type)
-        #############################################################
+
         _run_manager.on_text(
             str(api_response), color="yellow", end="\n", verbose=self.verbose
         )

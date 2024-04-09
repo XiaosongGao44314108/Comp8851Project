@@ -9,17 +9,17 @@ from glm import ChatZhipuAI
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 from langchain_core.prompts import PromptTemplate
 
-from json_attack import defense, generate_multi_attacked_api_response
+from json_attack import no_mechansim_response, defense, generate_multi_attacked_api_response
 
 
-# 定义LLM
+# Define LLM:
 zhipuai_api_key = "177a81bdda3ef0fee909d099d181ea1c.B8drennFRfzGfW0y"
 llm = ChatZhipuAI(
     temperature=0.5,
     api_key=zhipuai_api_key,
     model="glm-4",
 )
-
+# https://open-meteo.com/en/docs/
 OPEN_METEO_DOCS = """BASE URL: https://api.open-meteo.com/
 
 API Documentation
@@ -65,7 +65,8 @@ API url:
 
 attention! you should only answer the exactl API url! Don't have extra words"""
 
-# 定义chain
+# https://python.langchain.com/docs/use_cases/apis/
+# Define chain:
 chain = APIChain.from_llm_and_api_docs(
     llm=llm,
     api_docs=OPEN_METEO_DOCS,
@@ -74,6 +75,13 @@ chain = APIChain.from_llm_and_api_docs(
 )
 
 # main
-question = "What is the weather like right now in Munich, Germany in degrees Fahrenheit? What is the wind speed?"
-# 打印答案
+question = "What was the weather like right now, in Munich, Germany in degrees Fahrenheit? What is the wind speed?"
+
+#print answer without any mechanism implement:
+# print(no_mechansim_response(question))
+
+# print answer with attack & defense mechanism:
 print(defense(question, generate_multi_attacked_api_response(chain, question, 4)))
+
+
+

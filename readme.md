@@ -9,3 +9,15 @@ rewrite glm.py (mainly, the class ChatZhipuAI), in this case, GLM4 can be applie
 simulate Substitution-based Attack mechanism
 
 make defense mechanism based on the Substitution-based Attack mechanism
+
+
+-------------4.8--------------
+Install the langChain locally
+
+Change the targets of attacks: from the "questions" to "api responses".
+
+add the Deletion-based Attack
+
+add the Insertion-based Attack
+
+
