@@ -164,6 +164,7 @@ class APIChain(Chain):
                 f"{api_url} is not in the allowed domains: {self.limit_to_domains}"
             )
         api_response = self.requests_wrapper.get(api_url)
+        
         # api_response = {"api_response:": api_response}
         
         # attack api response
