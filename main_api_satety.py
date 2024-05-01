@@ -14,7 +14,8 @@ from json_attack import defense, generate_multi_attacked_api_response
 
 
 # Define LLM:
-zhipuai_api_key = "177a81bdda3ef0fee909d099d181ea1c.B8drennFRfzGfW0y"
+# https://open.bigmodel.cn/usercenter/apikeys
+zhipuai_api_key = "0d06439ccc1098df0b8958d50d15042c.KU6PZ24f6rMrwNiU"
 llm = ChatZhipuAI(
     temperature=0.2,
     api_key=zhipuai_api_key,
@@ -25,7 +26,7 @@ llm = ChatZhipuAI(
 question = "What is the weather like right now in Beijing, China in degrees Fahrenheit? What is the wind speed?"
 # print answer
 num_call = 4
-mode = 0  # 0: print human-reable answer for each api response，1: Only return one human-reable answer for all the api responses
+mode = 0 
 print(defense(question, generate_multi_attacked_api_response(
     llm,question, num_call), mode=mode))
 
