@@ -173,13 +173,27 @@ class APIChain(Chain):
         not_attack_rate = 2  
         import random
         # Determine whether to attack based on the random number generated. Attack will only occur when not_attack=0
-        not_attack = random.choice(list(range(not_attack_rate)))
-        from json_attack import attack_api_response
+        ############
+        # Week9:
+        # not_attack = random.choice(list(range(not_attack_rate)))
+        # from json_attack import attack_api_response
+        from json_attack import attack_api_response, manual_api_response, user_choice
+        not_attack, attack_type, field, field_value = user_choice(question)
 
         # Attack api_response
-        api_response, attack_type = attack_api_response(
-            question, api_response, not_attack)
-        print(attack_type)
+        # api_response, attack_type = attack_api_response(
+        #     question, api_response, not_attack)
+        # print ("haha")
+        # print(attack_type)
+        api_response, attack_type = manual_api_response(
+            question, api_response, field, field_value, attack_type, not_attack
+        )
+        if not_attack:
+            print("************************")
+            print("Without attack, the answer is:")
+        else:
+            print("************************")
+            print("After attack, the answer is:")
 
         _run_manager.on_text(
             str(api_response), color="yellow", end="\n", verbose=self.verbose

@@ -10,7 +10,7 @@ from glm import ChatZhipuAI
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 from langchain_core.prompts import PromptTemplate
 
-from json_attack import defense, generate_multi_attacked_api_response
+from json_attack import defense, generate_multi_attacked_api_response, get_question_type
 
 
 # Define LLM:
@@ -23,11 +23,15 @@ llm = ChatZhipuAI(
 )
 
 # main
-question = "What is the weather like right now in Beijing, China in degrees Fahrenheit? What is the wind speed?"
+# question = "What is the weather like right now in Beijing, China in degrees Fahrenheit? What is the wind speed?"
+question = "How much Vietnamese dong can 1 US dollar be exchanged for?"
 # print answer
-num_call = 4
-mode = 0 
+num_call = 1
+
+question_type = get_question_type(question)
+
+mode = 2 
 print(defense(question, generate_multi_attacked_api_response(
-    llm,question, num_call), mode=mode))
+    llm,question, num_call, question_type), mode=mode))
 
 

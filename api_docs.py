@@ -51,6 +51,25 @@ You only need to add location and key parameters, you cannot add other parameter
 Attention! you should only answer the exactl API url! Don't have extra words.
 """
 
+
+OPEN_EXCHANGERATE_DOCS = """BASE URL: https://v6.exchangerate-api.com/
+
+API Documentation
+The API endpoint /v6/62702408a63adce179c30286/latest accepts 'one' currency code. All URL parameters are listed below:
+
+Parameter	Format	Required	Default	Description
+currency code	String	Yes	a currency code for the country
+
+There are some API url examples: 
+https://v6.exchangerate-api.com/v6/62702408a63adce179c30286/latest/USD
+https://v6.exchangerate-api.com/v6/62702408a63adce179c30286/latest/CNY
+https://v6.exchangerate-api.com/v6/62702408a63adce179c30286/latest/EUR
+
+Just select 'one' country's currency code from the countries mentioned in the question and add it to the URL.
+You only need to add 'one' currency code to the url, you cannot add other parameters!
+Attention! you should only answer the exactl API url! Don't have extra words.
+"""
+
 api_url_prompt = """You are given the below API Documentation:
 {api_docs}
 Using this documentation, generate the full API url to call for answering the user question.
