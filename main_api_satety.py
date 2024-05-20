@@ -23,15 +23,14 @@ llm = ChatZhipuAI(
 )
 
 # main
-# question = "What is the weather like right now in Beijing, China in degrees Fahrenheit? What is the wind speed?"
-question = "How much Vietnamese dong can 1 US dollar be exchanged for?"
+question = "What is the weather like right now in Beijing, China in degrees Fahrenheit? What is the wind speed?"
+# question = "How much the Yen can 1 US dollar be exchanged for?"
 # print answer
 num_call = 1
 
 question_type = get_question_type(question)
 
-mode = 2 
-print(defense(question, generate_multi_attacked_api_response(
-    llm,question, num_call, question_type), mode=mode))
+mode = 1
+print(defense(question, num_call, question_type, mode=mode))
 
 

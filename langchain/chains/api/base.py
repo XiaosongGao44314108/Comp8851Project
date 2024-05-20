@@ -170,8 +170,10 @@ class APIChain(Chain):
         # attack api response
         # The larger the rate, the smaller the probability of the API 
         # being attacked (1: Will definitely be attacked, 2: 50% probability of attack)
-        not_attack_rate = 2  
-        import random
+        from json_attack import remove_extra_slashes
+        api_url = remove_extra_slashes(api_url)
+        api_response = self.requests_wrapper.get(api_url)
+
         # Determine whether to attack based on the random number generated. Attack will only occur when not_attack=0
         ############
         # Week9:
@@ -188,13 +190,7 @@ class APIChain(Chain):
         api_response, attack_type = manual_api_response(
             question, api_response, field, field_value, attack_type, not_attack
         )
-        if not_attack:
-            print("************************")
-            print("Without attack, the answer is:")
-        else:
-            print("************************")
-            print("After attack, the answer is:")
-
+        
         _run_manager.on_text(
             str(api_response), color="yellow", end="\n", verbose=self.verbose
         )
@@ -205,6 +201,16 @@ class APIChain(Chain):
             api_response=api_response,
             callbacks=_run_manager.get_child(),
         )
+        
+        if not_attack:
+            answer = "************************\n" + \
+                "Without attack, the answer is:\n" + answer
+        else:
+            answer = "************************\n" + \
+                "After attack, the answer is:\n" + answer
+
+        print(answer)
+        
         return {self.output_key: answer}
 
     async def _acall(
