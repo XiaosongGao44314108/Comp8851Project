@@ -23,8 +23,8 @@ llm = ChatZhipuAI(
 )
 
 # main
-question = "What is the weather like right now in Beijing, China in degrees Fahrenheit? What is the wind speed?"
-# question = "How much the Yen can 1 US dollar be exchanged for?"
+# question = "What is the weather like right now in Beijing, China in degrees Fahrenheit? What is the wind speed?"
+question = "How much the Yen can 1 US dollar be exchanged for?"
 # print answer
 num_call = 1
 
